@@ -43,8 +43,54 @@ class ModelTrainer:
                 'AdaBoostClassifier': AdaBoostClassifier(),
                 'SVC': SVC()
             }
+            params = {
+                'RandomForestClassifier': {
+                    
+                    'n_estimators': [50, 100, 200],
+                    'max_depth': [None, 10, 20, 30],
+                    'min_samples_split': [2, 5, 10],     
+                    'min_samples_leaf': [1, 2, 4]
+                },
+                'GradientBoostingClassifier': {
 
-            model_report:dict = evaluate_models(X_train, y_train, X_test, y_test, models)
+                    'n_estimators': [50, 100, 200],
+                    'max_depth': [None, 10, 20, 30],
+                    'min_samples_split': [2, 5, 10],
+                    'min_samples_leaf': [1, 2, 4]
+                },
+                'LogisticRegression': {
+                    'C': [0.01, 0.1, 1, 10, 100],
+                    'solver': ['liblinear', 'saga']
+                },
+                'DecisionTreeClassifier': {
+                    'criterion': ['gini', 'entropy'],
+                    'max_depth': [None, 10, 20, 30],
+                    'min_samples_split': [2, 5, 10],
+                    'min_samples_leaf': [1, 2, 4]
+                },
+                'XGBClassifier': {
+
+                    'learning_rate': [0.01, 0.1, 1],
+                    'max_depth': [None, 10, 20, 30],
+                    'n_estimators': [50, 100, 200]
+                },
+                'CatBoostRegressor': {
+                    'iterations': [50, 100, 200],    
+                    'depth': [None, 10, 20, 30],
+                    'learning_rate': [0.01, 0.1, 1]
+                },
+                'AdaBoostClassifier': {
+                    'n_estimators': [50, 100, 200],
+                    'learning_rate': [0.01, 0.1, 1]
+                },
+                'SVC': {
+                    'C': [0.01, 0.1, 1, 10, 100],
+                    'kernel': ['linear', 'rbf', 'poly'],
+                }
+            }
+
+            logging.info('Model training started')
+            model_report:dict = evaluate_models(X_train, y_train, X_test, y_test, models,params)
             best_model_score = max(sorted(model_report.values()))
 
             best_model_name = list(model_report.keys())[
@@ -61,3 +107,16 @@ class ModelTrainer:
                 file_path=self.model_trainer_config.trained_model_file_path,
                 obj=best_model
             )
+            logging.info(f'Best model saved at {self.model_trainer_config.trained_model_file_path}')
+            predicted = best_model.predict(X_test)
+            accuracy = accuracy_score(y_test, predicted)
+            f1 = f1_score(y_test, predicted, average='weighted')
+            precision = precision_score(y_test, predicted, average='weighted')
+            recall = recall_score(y_test, predicted, average='weighted')
+            return {
+                'model_name': best_model_name,
+                'accuracy': accuracy,
+                'f1_score': f1,
+                'precision': precision,
+                'recall': recall
+            }
