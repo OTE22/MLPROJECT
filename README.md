@@ -157,8 +157,8 @@ The system evaluates the following algorithms:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/student-performance-ml.git
-   cd student-performance-ml
+   git clone https://github.com/OTE22/MLPROJECT.git
+   cd mlproject
    ```
 
 2. **Create Virtual Environment**
@@ -184,7 +184,7 @@ The system evaluates the following algorithms:
 
 ### Quick Install (One-Liner)
 ```bash
-git clone https://github.com/yourusername/student-performance-ml.git && cd student-performance-ml && python -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+git clone https://github.com/OTE22/MLPROJECT.git && cd mlproject && python -m venv venv && source venv/bin/activate && pip install -r requirements.txt
 ```
 
 ---
@@ -509,7 +509,7 @@ curl -X POST http://localhost:5000/predict \
 ## 📁 Project Structure
 
 ```
-student-performance-ml/
+mlproject/
 │
 ├── application.py              # Flask application entry point
 ├── setup.py                    # Package installation configuration
@@ -907,7 +907,7 @@ We welcome contributions! Please follow these guidelines:
 
 1. **Fork the Repository**
    ```bash
-   git clone https://github.com/yourusername/student-performance-ml.git
+   git clone https://github.com/OTE22/MLPROJECT.git.git
    ```
 
 2. **Create a Feature Branch**
@@ -984,15 +984,15 @@ SOFTWARE.
 
 **Author**: Ali Abbass
 **Email**: ali@gmail.com
-**Project Link**: [https://github.com/yourusername/student-performance-ml](https://github.com/yourusername/student-performance-ml)
+**Project Link**: [https://github.com/OTE22/MLPROJECT.git](https://github.com/OTE22/MLPROJECT.git)
 
 ### Support
 
 For questions, issues, or suggestions:
 
 - 📧 Email: ali@gmail.com
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/student-performance-ml/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/student-performance-ml/discussions)
+- 🐛 Issues: [GitHub Issues](https://github.com/OTE22/MLPROJECT.git/issues)
+- 💬 Discussions: [GitHub Discussions](https://github/discussions)
 
 ---
 
