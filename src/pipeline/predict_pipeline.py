@@ -18,7 +18,7 @@ class PredictPipeline:
             preprocessor = load_object(file_path=preprocessor_path)
             model = load_object(file_path=model_path)
 
-            input_data = pd.DataFrame([features])
+            input_data = features
 
             # Apply preprocessing on input data
             input_data_preprocessed = preprocessor.transform(input_data)
